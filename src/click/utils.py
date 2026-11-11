@@ -80,7 +80,7 @@ def _make_default_short_help(help: str, max_length: int = 45) -> str:
     # does not start in lowercase. A lowercase word continues the sentence, so
     # the period belongs to an abbreviation such as "vs.".
     for i, word in enumerate(words):
-        if word.endswith(".") and i == last_index:
+        if word.endswith(".") and (i == last_index or not words[i + 1][0].islower()):
             words = words[: i + 1]
             break
 
